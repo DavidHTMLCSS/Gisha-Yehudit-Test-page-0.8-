@@ -142,7 +142,7 @@ function generateGallery() {
             const info = extractAlbumInfo(folder);
             if (!info) return null;
             const imagePath = path.join('Gallery-images', folder, 'Logo.jpg');
-            const images = fs.readdirSync(path.join(galleryPath, folder)).map(image => path.join(   'Gallery-images', folder, image));
+            const images = fs.readdirSync(path.join(galleryPath, folder)).map(image => path.join('Gallery-images', folder, image));
             return {
                 ...info,
                 dateObj: parseDate(info.date),
