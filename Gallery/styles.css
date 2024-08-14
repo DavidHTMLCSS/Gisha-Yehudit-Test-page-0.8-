@@ -1,0 +1,362 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+html { 
+    scroll-behavior: smooth; 
+}
+
+* {
+    font-family: "Rubik", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: black;
+}
+
+.header{
+    position: fixed;
+    width: 100%;
+    height: 12vh;
+    z-index: 100;
+}
+
+.logo-img{
+    position: relative;
+    max-height: 80%;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+}
+
+.page-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 400;
+    transition: opacity 0.3s ease;
+}
+
+.page-overlay.open {
+    display: block;
+    opacity: 1;
+}
+
+.menu-button {
+    position: fixed;
+    top: 15px;
+    right: 25px;
+    font-size: 50px;
+    z-index: 300;
+    cursor: pointer;
+    color: white;
+    text-shadow: 6px 6px black;
+}
+
+.context-menu {
+    position: fixed;
+    top: 0;
+    right: -350px;
+    width: 350px;
+    height: 100%;
+    background-color: white;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    z-index: 500;
+    transition: right 0.3s ease; 
+}
+
+.context-menu.open {
+    right: 0; 
+}
+
+.context-menu ul {
+    list-style: none;
+    padding: 20px;
+}
+
+.context-menu ul li {
+    padding: 10px 0;
+    cursor: pointer;
+}
+
+.context-menu ul li a {
+    text-decoration: none;
+    color: black;
+    display: block;
+}
+
+.context-menu ul li a:hover {
+    background-color: #f0f0f0;
+}
+
+.social-button{
+    display: inline-block;
+    cursor: pointer;
+}
+
+.close-button {
+    text-align: right;
+    padding: 20px;
+    font-size: 40px;
+    cursor: pointer;
+    color: black;
+}
+
+.albums-content{
+    position: relative;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 25px;
+    grid-gap: 60px;
+    left: 5%;
+    right: 10%;
+    width: 90%;
+    height: auto;
+    top: 12vh;
+}
+
+.album{
+    border-radius: 25px;
+    border-style: solid;
+    height: 350px;
+    width: 520px;
+    box-shadow: 10px 5px 5px black;
+    opacity: 0; 
+    animation: fadeIn 1s ease-in-out forwards;
+}
+
+.album:hover{
+    box-shadow: 15px 10px 10px black;
+    cursor: pointer;
+}
+
+.album-name{
+    position: relative;
+    top: -15%;
+    background-color: rgba(238, 238, 238);
+    color: black;
+    height: 150px;
+    bottom: 20px;
+    border-radius:0px 0px 20px 20px;
+}
+
+.album-image{
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: static;
+    object-position: bottom 50%;
+    object-fit: cover;
+    border-radius:20px;
+    width: 100%;
+    height: 70%;
+}
+
+.album-name h1{
+    position: relative;
+    top: 15%;
+    left: 7%;
+    font-size: max(25px);
+    text-align: start;
+    width: 450px;
+}
+
+.album-name h2{
+    position: relative;
+    top: 20%;
+    left: 7%;
+    font-size: max(20px);
+    color: rgba(0, 0, 0, 0.5);
+    text-align: start;
+}
+
+/* Added CSS for dialog window */
+.dialog {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.dialog-content {
+    background-color: white;
+    margin: 5% auto;
+    padding: 40px;
+    width: 80%;
+    border-radius: 100px;
+}
+
+.close-button {
+    position: sticky    ;
+    left: 95%;
+    color: black;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.images-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.images-grid img {
+    max-width: 250px;
+    max-height: 250px;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+
+@media only screen and (max-width: 440px) {
+    .header{
+        height: 10vh;
+        left: 25%;
+    }
+
+    .menu-button {
+        top: 5px;
+    }
+
+    .logo-img{
+        left: 25%;
+        top: 65%;
+    }
+
+    .albums-content{
+        grid-template-columns: auto;
+        left: 3%;
+        right: 10%;
+        width: 90%;
+        height: auto;
+        top: 12vh;
+    }
+
+    .album{
+        border-radius: 25px;
+        height: 200px;
+        width: 105%;
+        box-shadow: 10px 5px 5px black;
+    }
+
+    .album-name{
+        top: -15%;
+        color: black;
+        height: 43%;
+        bottom: 20px;
+    }
+
+    .album-name h1{
+        top: 15%;
+        left: 7%;
+        font-size: max(15px);
+        text-align: start;
+        width: 200px;
+    }
+    
+    .album-name h2{
+        position: relative;
+        top: 20%;
+        left: 7%;
+        font-size: max(15px);
+        color: rgba(0, 0, 0, 0.5);
+        text-align: start;
+    }
+
+    .dialog-content {
+        background-color: white;
+        margin: 8% auto;
+        padding: 5px;
+        width: 80%;
+        border-radius: 40px;
+    }
+
+
+    .close-button {
+        left: 75%;
+        font-size: 50px;
+    }
+
+    .images-grid img {
+        max-width: 200px;
+        max-height: 200px;
+    }
+
+}
+
+@media screen and (min-width: 767px) and (max-width: 1024px) {
+    .menu-button {
+        top: 8px;
+        right: 28px;
+        font-size: 70px;
+    }
+
+    .close-button {
+        font-size: 60px;
+    }
+
+
+
+    .logo-img{
+        left: 15%;
+    }
+
+    .header{
+        height: 10vh;
+        left: 35%;
+    }
+
+    .albums-content{
+        grid-template-columns: auto auto;
+        left: 0.5%;
+        right: 10%;
+        width: 90%;
+        height: auto;
+        top: 12vh;
+    }
+
+    .album{
+        border-radius: 25px;
+        height: 280px;
+        width: 440px;
+    }
+
+    .album-name{
+        background-color: rgba(238, 238, 238);
+        color: black;
+        height: 123px;
+        bottom: 20px;
+        border-radius:0px 0px 20px 20px;
+    }
+
+    .album-name h1{
+        top: 15%;
+        left: 7%;
+        text-align: start;
+        width: 350px;
+    }
+}
+
